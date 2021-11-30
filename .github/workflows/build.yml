@@ -40,5 +40,5 @@ jobs:
 
       - uses: actions/upload-artifact@v2
         with:
-         name: BeatSaberDiscordLink
+         name: NyaDesktop
          path: ${{ github.workspace }}\${{ env.Solution_Name }}\bin\Release\* # or path/to/artifact
