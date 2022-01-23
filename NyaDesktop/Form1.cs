@@ -98,7 +98,7 @@ namespace NyaDesktop
             }
             catch
             {
-                pictureBox1.Load("https://cdn.discordapp.com/attachments/839294618062553098/901663348280684604/API_Error.png");
+                pictureBox1.Load("https://i.imgur.com/5JFEDXs.png");
             }
             nyaCount++;
             updatePrecense();
