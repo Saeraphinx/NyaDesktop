@@ -28,6 +28,10 @@ namespace NyaDesktop
             DiscordClient = client;
             DiscordClient.Initialize();
             updatePrecense();
+            if (Properties.Settings.Default.path != "")
+            {
+                save_path = Properties.Settings.Default.path;
+            }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -67,6 +71,8 @@ namespace NyaDesktop
             {
                 save_path = folderBrowserDialog1.SelectedPath;
                 button2.Enabled = true;
+                Properties.Settings.Default.path = save_path;
+                Properties.Settings.Default.Save();
             }
         }
 
