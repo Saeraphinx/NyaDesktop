@@ -9,7 +9,7 @@ namespace NyaDesktop
 {
     class NyaAPI
     {
-        private static readonly System.Net.Http.HttpClient client = new HttpClient();
+        static readonly HttpClient client = new HttpClient();
 
         // HttpClient is intended to be instantiated once per application, rather than per-use. See Remarks.
         public static async Task<String> PullNyaImageURL(string type, string endpoint)
