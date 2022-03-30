@@ -28,9 +28,12 @@ jobs:
       - name: Navigate to Workspace
         run: cd $GITHUB_WORKSPACE
 
+#      - name: Restore Packages
+#        run: nuget restore $env:Solution_FileName
       - name: Restore Packages
-        run: nuget restore $env:Solution_FileName
+        run: msbuild.exe /restore
 
+#
       - name: Build Solution
         run: |
           msbuild.exe $env:Solution_FileName /p:platform="Any CPU" /p:configuration="Release"
