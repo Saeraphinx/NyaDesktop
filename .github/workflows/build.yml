@@ -28,18 +28,12 @@ jobs:
       - name: Navigate to Workspace
         run: cd $GITHUB_WORKSPACE
 
-#      - name: Restore Packages
-#        run: nuget restore $env:Solution_FileName
       - name: Restore Packages
-        run: msbuild.exe /restore
+        run: nuget restore $env:Solution_FileName
 
-#
       - name: Build Solution
         run: |
           msbuild.exe $env:Solution_FileName /p:platform="Any CPU" /p:configuration="Release"
-# TODO: set up tests        
-#      - name: Run Tests
-#        run: vstest.console.exe .\tests\BeatSaberDiscordLink.Tests\bin\Release\BeatSaberDiscordLink.Tests.dll
 
       - uses: actions/upload-artifact@v2
         with:
