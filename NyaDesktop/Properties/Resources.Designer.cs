@@ -19,7 +19,7 @@ namespace NyaDesktop.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -67,6 +67,15 @@ namespace NyaDesktop.Properties {
             get {
                 object obj = ResourceManager.GetObject("favicon", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [{&quot;name&quot;:&quot;waifu.pics&quot;,&quot;apiInfo&quot;:&quot;url&quot;,&quot;SfwEndpoint&quot;:&quot;https://api.waifu.pics/sfw&quot;,&quot;NsfwEndpoint&quot;:&quot;https://api.waifu.pics/nsfw&quot;,&quot;SfwEndpoints&quot;:[&quot;waifu&quot;,&quot;neko&quot;,&quot;shinobu&quot;,&quot;megumin&quot;,&quot;bully&quot;,&quot;cuddle&quot;,&quot;cry&quot;,&quot;hug&quot;,&quot;awoo&quot;,&quot;kiss&quot;,&quot;lick&quot;,&quot;pat&quot;,&quot;smug&quot;,&quot;bonk&quot;,&quot;yeet&quot;,&quot;blush&quot;,&quot;smile&quot;,&quot;wave&quot;,&quot;highfive&quot;,&quot;handhold&quot;,&quot;nom&quot;,&quot;bite&quot;,&quot;glomp&quot;,&quot;slap&quot;,&quot;kill&quot;,&quot;kick&quot;,&quot;happy&quot;,&quot;wink&quot;,&quot;poke&quot;,&quot;dance&quot;,&quot;cringe&quot;],&quot;NsfwEndpoints&quot;:[&quot;waifu&quot;,&quot;neko&quot;,&quot;trap&quot;,&quot;blowjob&quot;]},{&quot;name&quot;:&quot;nekos.life&quot;,&quot;apiInfo&quot;:&quot;url&quot;,&quot;SfwEndpoint&quot;:&quot;https://nekos.life/api/v2/im [re....
+        /// </summary>
+        internal static string JSONendpoints {
+            get {
+                return ResourceManager.GetString("JSONendpoints", resourceCulture);
             }
         }
     }

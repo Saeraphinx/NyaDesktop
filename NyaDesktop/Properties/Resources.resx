@@ -121,4 +121,8 @@
   <data name="favicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\favicon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="JSONendpoints" xml:space="preserve">
+    <value>[{"name":"waifu.pics","apiInfo":"url","SfwEndpoint":"https://api.waifu.pics/sfw","NsfwEndpoint":"https://api.waifu.pics/nsfw","SfwEndpoints":["waifu","neko","shinobu","megumin","bully","cuddle","cry","hug","awoo","kiss","lick","pat","smug","bonk","yeet","blush","smile","wave","highfive","handhold","nom","bite","glomp","slap","kill","kick","happy","wink","poke","dance","cringe"],"NsfwEndpoints":["waifu","neko","trap","blowjob"]},{"name":"nekos.life","apiInfo":"url","SfwEndpoint":"https://nekos.life/api/v2/img/","NsfwEndpoint":"https://nekos.life/api/v2/img/","SfwEndpoints":["neko","waifu","tickle","slap","pat","meow","lizard","kiss","hug","fox_girl","feed","cuddle","ngif","smug","woof","wallpaper","goose","gecg","avatar"],"NsfwEndpoints":["lewd"]},{"name":"xsky.dev","apiInfo":"url","SfwEndpoint":"https://api.xsky.dev/","NsfwEndpoint":"https://api.xsky.dev/","SfwEndpoints":["neko","catboy"],"NsfwEndpoints":["hentai","bdsm","furry","ff","feet","trap","gif","futa"]},{"name":"anime-images","apiInfo":"url","SfwEndpoint":"https://anime-api.hisoka17.repl.co/img/","NsfwEndpoint":"https://anime-api.hisoka17.repl.co/img/","SfwEndpoints":["hug","kiss","slap","wink","pat","kill","cuddle","punch","waifu"],"NsfwEndpoints":["hentai","boobs","lesbian"]}]</value>
+    <comment>Used to store Endpoint data to be embedded and easily copied.</comment>
+  </data>
 </root>

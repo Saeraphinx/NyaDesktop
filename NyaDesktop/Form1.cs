@@ -21,6 +21,8 @@ namespace NyaDesktop
         readonly WebClient webclient = new WebClient();
         readonly DiscordRpcClient DiscordClient;
         string emergcencySave = "";
+        bool nsfw = false;
+        NyaAPI.Endpoint currEndpoint;
 
         public Form1(DiscordRpcClient client)
         {
@@ -32,49 +34,52 @@ namespace NyaDesktop
             {
                 save_path = Properties.Settings.Default.path;
             }
+            LoadEndpointInfo();
+
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if ((string)comboBox1.SelectedItem == "sfw")
-            {
-                sfw_comboBox.Enabled = true;
-                sfw_comboBox.Visible = true;
-                nsfw_comboBox.Enabled = false;
-                nsfw_comboBox.Visible = false;
-            }
-            else if ((string)comboBox1.SelectedItem == "nsfw")
-            {
-                nsfw_comboBox.Enabled = true;
-                nsfw_comboBox.Visible = true;
-                sfw_comboBox.Enabled = false;
-                sfw_comboBox.Visible = false;
-            }
-        }
-        private string getEndPoint()
-        {
-            if ((string)comboBox1.SelectedItem == "sfw")
-            {
-                return (string)sfw_comboBox.SelectedItem;
-            }
-            else if ((string)comboBox1.SelectedItem == "nsfw")
-            {
-                return (string)nsfw_comboBox.SelectedItem;
-            }
-            else { return "broke"; }
+        public void LoadEndpointInfo(){
+            NyaAPI.LoadEndpoints();
+            NyaAPI.endpoints.ForEach(x => {
+                serviceToolStripComboBox1.Items.Add(x.name);
+            });
+            SFWToolStripComboBox1.SelectedIndex = 0;
+            serviceToolStripComboBox1.SelectedIndex = 0;
+            endpointToolStripComboBox2.SelectedIndex = 0;
+
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
+        private void serviceToolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e) {
+            endpointToolStripComboBox2.Items.Clear();
+            NyaAPI.endpoints.ForEach(x => {
+                currEndpoint = x;
+                if (x.name == serviceToolStripComboBox1.SelectedItem.ToString()) {
+                    endpointToolStripComboBox2.Items.Clear();
+                    
+                    if (SFWToolStripComboBox1.SelectedItem.ToString() == "nsfw") {
+                        x.NsfwEndpoints.ForEach(y => {
+                            endpointToolStripComboBox2.Items.Add(y);
+                        });
+                        nsfw = true;
+                    } else {
+                        x.SfwEndpoints.ForEach(y => {
+                            endpointToolStripComboBox2.Items.Add(y);
+                        });
+                        nsfw = false;
+                    }
+                }
+            });
+            endpointToolStripComboBox2.SelectedIndex = 0;
+        }
 
-            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
-            {
+        private void setSaveDirectoryToolStripMenuItem_Click(object sender, EventArgs e) {
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK) {
                 save_path = folderBrowserDialog1.SelectedPath;
                 button2.Enabled = true;
                 Properties.Settings.Default.path = save_path;
                 Properties.Settings.Default.Save();
             }
-        }
+        }        
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -95,11 +100,10 @@ namespace NyaDesktop
 
         private void button3_Click(object sender, EventArgs e)
         {
+            string endpoint = endpointToolStripComboBox2.SelectedItem.ToString();
             try
             {
-                string endpoint = getEndPoint();
-                string type = (string)comboBox1.SelectedItem;
-                curr_image_url = Task.Run(() => NyaAPI.PullNyaImageURL(type, endpoint)).Result;
+                curr_image_url = Task.Run(() => NyaAPI.PullNyaImageURL(currEndpoint, nsfw, endpoint)).Result;
                 pictureBox1.Load(curr_image_url);
             }
             catch
